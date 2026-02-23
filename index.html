@@ -60,19 +60,11 @@ nav button:hover{
   border-radius:10px;
 }
 
-h2{
+h2,h3{
   color:#22c55e;
 }
 
-footer{
-  text-align:center;
-  padding:15px;
-  font-size:12px;
-  color:#9ca3af;
-}
-</style>
-</head>
-  button{
+button{
   margin:5px;
   padding:8px 12px;
   background:#22c55e;
@@ -90,6 +82,15 @@ button:hover{
   display:none;
 }
 
+footer{
+  text-align:center;
+  padding:15px;
+  font-size:12px;
+  color:#9ca3af;
+}
+</style>
+</head>
+
 <body>
 
 <header>
@@ -104,17 +105,15 @@ button:hover{
   <button onclick="showSection('senior')">Senior</button>
 </nav>
 
+<!-- INICIO -->
 <div id="inicio" class="section active">
   <div class="card">
     <h2>Bienvenido a QullaPlay</h2>
     <p>Plataforma digital oficial del fútbol regional.</p>
   </div>
-  <div class="card">
-    <h2>Secciones disponibles</h2>
-    <p>Fixture • Tabla • Resultados • Clubes</p>
-  </div>
 </div>
 
+<!-- PRIMERA -->
 <div id="primera" class="section">
 
   <div class="card">
@@ -123,62 +122,75 @@ button:hover{
 
   <div class="card">
     <h3>Zona A</h3>
-    <button onclick="showSub('primeraA_tabla')">Tabla</button>
-    <button onclick="showSub('primeraA_fixture')">Fixture</button>
-    <button onclick="showSub('primeraA_resultados')">Resultados</button>
+    <button onclick="showSub('pA_tabla')">Tabla</button>
+    <button onclick="showSub('pA_fixture')">Fixture</button>
+    <button onclick="showSub('pA_resultados')">Resultados</button>
   </div>
 
   <div class="card">
     <h3>Zona B</h3>
-    <button onclick="showSub('primeraB_tabla')">Tabla</button>
-    <button onclick="showSub('primeraB_fixture')">Fixture</button>
-    <button onclick="showSub('primeraB_resultados')">Resultados</button>
+    <button onclick="showSub('pB_tabla')">Tabla</button>
+    <button onclick="showSub('pB_fixture')">Fixture</button>
+    <button onclick="showSub('pB_resultados')">Resultados</button>
   </div>
 
-  <div id="primeraA_tabla" class="card sub hidden">
+  <div id="pA_tabla" class="card hidden sub">
     <h3>Tabla - Zona A</h3>
-    <p>Próximamente tabla oficial</p>
+    <p>Próximamente</p>
   </div>
 
-  <div id="primeraA_fixture" class="card sub hidden">
+  <div id="pA_fixture" class="card hidden sub">
     <h3>Fixture - Zona A</h3>
-    <p>Próximamente fixture oficial</p>
+    <p>Próximamente</p>
   </div>
 
-  <div id="primeraA_resultados" class="card sub hidden">
+  <div id="pA_resultados" class="card hidden sub">
     <h3>Resultados - Zona A</h3>
-    <p>Próximamente resultados oficiales</p>
+    <p>Próximamente</p>
   </div>
 
-  <div id="primeraB_tabla" class="card sub hidden">
+  <div id="pB_tabla" class="card hidden sub">
     <h3>Tabla - Zona B</h3>
-    <p>Próximamente tabla oficial</p>
+    <p>Próximamente</p>
   </div>
 
-  <div id="primeraB_fixture" class="card sub hidden">
+  <div id="pB_fixture" class="card hidden sub">
     <h3>Fixture - Zona B</h3>
-    <p>Próximamente fixture oficial</p>
+    <p>Próximamente</p>
   </div>
 
-  <div id="primeraB_resultados" class="card sub hidden">
+  <div id="pB_resultados" class="card hidden sub">
     <h3>Resultados - Zona B</h3>
-    <p>Próximamente resultados oficiales</p>
+    <p>Próximamente</p>
   </div>
 
 </div>
 
+<!-- RESERVA -->
 <div id="reserva" class="section">
   <div class="card">
     <h2>Reserva</h2>
     <p>Zona A y Zona B</p>
   </div>
 </div>
- 
-</div><div id="senior" class="section">
+
+<!-- SENIOR -->
+<div id="senior" class="section">
+
   <div class="card">
     <h2>Senior</h2>
-    <p>Zona A y Zona B</p>
   </div>
+
+  <div class="card">
+    <h3>Zona A</h3>
+    <p>Próximamente</p>
+  </div>
+
+  <div class="card">
+    <h3>Zona B</h3>
+    <p>Próximamente</p>
+  </div>
+
 </div>
 
 <footer>
@@ -187,18 +199,19 @@ button:hover{
 
 <script>
 function showSection(sectionId){
-  <script>
-function showSub(id){
-  const subs = document.querySelectorAll('.sub');
-  subs.forEach(el => el.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-}
-</script>
   const sections=document.querySelectorAll('.section');
   sections.forEach(section=>{
     section.classList.remove('active');
   });
   document.getElementById(sectionId).classList.add('active');
+}
+
+function showSub(id){
+  const subs=document.querySelectorAll('.sub');
+  subs.forEach(el=>{
+    el.classList.add('hidden');
+  });
+  document.getElementById(id).classList.remove('hidden');
 }
 </script>
 
