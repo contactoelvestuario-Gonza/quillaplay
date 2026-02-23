@@ -1,240 +1,184 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QullaPlay</title>
-
-<style>
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:#0f172a;
-  color:white;
-}
-
-header{
-  background:#111827;
-  padding:15px;
-  text-align:center;
-  border-bottom:3px solid #22c55e;
-}
-
-header h1{
-  margin:0;
-  color:#22c55e;
-}
-
-nav{
-  display:flex;
-  justify-content:space-around;
-  background:#1f2937;
-  padding:10px;
-}
-
-nav button{
-  background:none;
-  border:none;
-  color:white;
-  font-size:14px;
-  cursor:pointer;
-}
-
-nav button:hover{
-  color:#22c55e;
-}
-
-.section{
-  display:none;
-  padding:20px;
-}
-
-.active{
-  display:block;
-}
-
-.card{
-  background:#1f2937;
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:10px;
-}
-
-h2,h3{
-  color:#22c55e;
-}
-
-button{
-  margin:5px;
-  padding:8px 12px;
-  background:#22c55e;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:13px;
-}
-
-button:hover{
-  background:#16a34a;
-}
-
-.hidden{
-  display:none;
-}
-
-footer{
-  text-align:center;
-  padding:15px;
-  font-size:12px;
-  color:#9ca3af;
-}
-</style>
+  <title>QullaPlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: Arial; background:#111; color:white; text-align:center; }
+    button { padding:10px; margin:5px; }
+    input, select { padding:8px; margin:5px; }
+    .card { background:#222; padding:15px; margin:10px; border-radius:8px; }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h1>QullaPlay</h1>
-  <p>Liga Regional Sureña PB • Temporada 2026</p>
-</header>
+<h1>QullaPlay ⚽</h1>
 
-<nav>
-  <button onclick="showSection('inicio')">Inicio</button>
-  <button onclick="showSection('primera')">Primera</button>
-  <button onclick="showSection('reserva')">Reserva</button>
-  <button onclick="showSection('senior')">Senior</button>
-</nav>
+<h2>Crear Partido</h2>
 
-<!-- INICIO -->
-<div id="inicio" class="section active">
-  <div class="card">
-    <h2>Bienvenido a QullaPlay</h2>
-    <p>Plataforma digital oficial del fútbol regional.</p>
-  </div>
-</div>
+<select id="categoria">
+  <option>Primera</option>
+  <option>Reserva</option>
+  <option>Senior</option>
+</select>
 
-<!-- PRIMERA -->
-<div id="primera" class="section">
+<select id="zona">
+  <option>A</option>
+  <option>B</option>
+</select>
 
-  <div class="card">
-    <h2>Primera División</h2>
-  </div>
+<input type="text" id="local" placeholder="Equipo Local">
+<input type="text" id="visitante" placeholder="Equipo Visitante">
+<br>
+<button onclick="crearPartido()">Crear Partido</button>
 
-  <!-- ZONA A -->
-  <div class="card">
-    <h3>Zona A</h3>
-    <button onclick="showSub('pA_tabla')">Tabla</button>
-  </div>
+<hr>
 
-  <div id="pA_tabla" class="card hidden sub">
-    <h3>Tabla - Zona A</h3>
-
-    <table style="width:100%; border-collapse:collapse; font-size:12px;">
-      <tr>
-        <th>#</th>
-        <th style="text-align:left;">Equipo</th>
-        <th>PJ</th><th>PG</th><th>PE</th><th>PP</th>
-        <th>GF</th><th>GC</th><th>DG</th><th>PTS</th>
-      </tr>
-
-      <tr style="background:#14532d; font-weight:bold;">
-        <td>1</td><td>Club Union de Gral. M. Campos</td>
-        <td>0</td><td>0</td><td>0</td><td>0</td>
-        <td>0</td><td>0</td><td>0</td><td>0</td>
-      </tr>
-
-      <tr><td>2</td><td>Club Union Deportiva Bernasconi</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>3</td><td>Club Atletico Huracan</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>4</td><td>Club Deportivo Independiente</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>5</td><td>Club Gimnasia y Esgrima Darregueira</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>6</td><td>Club Atletico Argentino Jr</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>7</td><td>Club Deportivo y Social Colonial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-
-    </table>
-  </div>
-
-  <!-- ZONA B -->
-  <div class="card">
-    <h3>Zona B</h3>
-    <button onclick="showSub('pB_tabla')">Tabla</button>
-  </div>
-
-  <div id="pB_tabla" class="card hidden sub">
-    <h3>Tabla - Zona B</h3>
-
-    <table style="width:100%; border-collapse:collapse; font-size:12px;">
-      <tr>
-        <th>#</th>
-        <th style="text-align:left;">Equipo</th>
-        <th>PJ</th><th>PG</th><th>PE</th><th>PP</th>
-        <th>GF</th><th>GC</th><th>DG</th><th>PTS</th>
-      </tr>
-
-      <tr style="background:#14532d; font-weight:bold;">
-        <td>1</td><td>Club Social y Deportivo Union</td>
-        <td>0</td><td>0</td><td>0</td><td>0</td>
-        <td>0</td><td>0</td><td>0</td><td>0</td>
-      </tr>
-
-      <tr><td>2</td><td>Club Sportivo y Cultural</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>3</td><td>Club Atletico Pampero</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>4</td><td>Club Villa Mengelle</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>5</td><td>Club Darregueira</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>6</td><td>Club Atletico Rampla Jrs</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>7</td><td>Club Deportivo Alpachiri</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-
-    </table>
-  </div>
-
-</div>
-
-<!-- RESERVA -->
-<div id="reserva" class="section">
-  <div class="card">
-    <h2>Reserva</h2>
-    <p>Zona A y Zona B</p>
-  </div>
-</div>
-
-<!-- SENIOR -->
-<div id="senior" class="section">
-
-  <div class="card">
-    <h2>Senior</h2>
-  </div>
-
-  <div class="card">
-    <h3>Zona A</h3>
-    <p>Próximamente</p>
-  </div>
-
-  <div class="card">
-    <h3>Zona B</h3>
-    <p>Próximamente</p>
-  </div>
-
-</div>
-
-<footer>
-© QullaPlay 2026 • Plataforma digital de fútbol
-</footer>
+<h2>Partidos en Juego</h2>
+<div id="partidos"></div>
 
 <script>
-function showSection(sectionId){
-  const sections=document.querySelectorAll('.section');
-  sections.forEach(section=>{
-    section.classList.remove('active');
-  });
-  document.getElementById(sectionId).classList.add('active');
+const supabase = window.supabase.createClient(
+  "https://rckddwxsgldzwvxzcsjv.supabase.co",
+  "sb_publishable_0iVGcqTlUk9vzKiMyXhJEA__gsh4tnS"
+);
+
+async function crearPartido() {
+  const categoria = document.getElementById("categoria").value;
+  const zona = document.getElementById("zona").value;
+  const local = document.getElementById("local").value;
+  const visitante = document.getElementById("visitante").value;
+
+  await supabase.from("partidos").insert([
+    { categoria, zona, local, visitante }
+  ]);
+
+  cargarPartidos();
 }
 
-function showSub(id){
-  const subs=document.querySelectorAll('.sub');
-  subs.forEach(el=>{
-    el.classList.add('hidden');
+async function cargarPartidos() {
+  const { data } = await supabase
+    .from("partidos")
+    .select("*")
+    .order("created_at", { ascending:false });
+
+  let html = "";
+
+  data.forEach(p => {
+    html += `
+      <div class="card">
+        <h3>${p.local} ${p.goles_local} - ${p.goles_visitante} ${p.visitante}</h3>
+        <p>Estado: ${p.estado}</p>
+
+        ${p.estado === "En juego" ? `
+          <input type="number" placeholder="Minuto" id="min_${p.id}">
+          <input type="text" placeholder="Jugador" id="jug_${p.id}">
+          <select id="equipo_${p.id}">
+            <option value="${p.local}">${p.local}</option>
+            <option value="${p.visitante}">${p.visitante}</option>
+          </select>
+          <button onclick="gol('${p.id}')">Agregar Gol</button>
+          <br>
+          <button onclick="finalizar('${p.id}')">Finalizar Partido</button>
+        ` : `<strong>PARTIDO FINALIZADO</strong>`}
+      </div>
+    `;
   });
-  document.getElementById(id).classList.remove('hidden');
+
+  document.getElementById("partidos").innerHTML = html;
 }
+
+async function gol(id) {
+  const minuto = document.getElementById("min_"+id).value;
+  const jugador = document.getElementById("jug_"+id).value;
+  const equipo = document.getElementById("equipo_"+id).value;
+
+  const { data: partido } = await supabase
+    .from("partidos")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (equipo === partido.local) {
+    await supabase.from("partidos")
+      .update({ goles_local: partido.goles_local + 1 })
+      .eq("id", id);
+  } else {
+    await supabase.from("partidos")
+      .update({ goles_visitante: partido.goles_visitante + 1 })
+      .eq("id", id);
+  }
+
+  await supabase.from("eventos").insert([
+    { partido_id:id, minuto, jugador, equipo, tipo:"Gol" }
+  ]);
+
+  cargarPartidos();
+}
+
+async function finalizar(id) {
+  const { data: partido } = await supabase
+    .from("partidos")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  await supabase.from("partidos")
+    .update({ estado:"Finalizado" })
+    .eq("id", id);
+
+  // Actualizar tabla posiciones
+  let puntosLocal = 0;
+  let puntosVisitante = 0;
+
+  if (partido.goles_local > partido.goles_visitante) puntosLocal = 3;
+  else if (partido.goles_local < partido.goles_visitante) puntosVisitante = 3;
+  else { puntosLocal = 1; puntosVisitante = 1; }
+
+  await actualizarTabla(partido.local, partido, puntosLocal, partido.goles_local, partido.goles_visitante);
+  await actualizarTabla(partido.visitante, partido, puntosVisitante, partido.goles_visitante, partido.goles_local);
+
+  cargarPartidos();
+}
+
+async function actualizarTabla(equipo, partido, puntos, gf, gc) {
+
+  const { data } = await supabase
+    .from("posiciones")
+    .select("*")
+    .eq("equipo", equipo)
+    .eq("categoria", partido.categoria)
+    .eq("zona", partido.zona);
+
+  if (data.length === 0) {
+    await supabase.from("posiciones").insert([{
+      equipo,
+      categoria: partido.categoria,
+      zona: partido.zona,
+      puntos,
+      jugados:1,
+      ganados: puntos===3?1:0,
+      empatados: puntos===1?1:0,
+      perdidos: puntos===0?1:0,
+      goles_favor:gf,
+      goles_contra:gc
+    }]);
+  } else {
+    const actual = data[0];
+    await supabase.from("posiciones").update({
+      puntos: actual.puntos + puntos,
+      jugados: actual.jugados + 1,
+      ganados: actual.ganados + (puntos===3?1:0),
+      empatados: actual.empatados + (puntos===1?1:0),
+      perdidos: actual.perdidos + (puntos===0?1:0),
+      goles_favor: actual.goles_favor + gf,
+      goles_contra: actual.goles_contra + gc
+    }).eq("id", actual.id);
+  }
+}
+
+cargarPartidos();
 </script>
 
 </body>
