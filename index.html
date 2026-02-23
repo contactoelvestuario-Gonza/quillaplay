@@ -120,39 +120,29 @@ footer{
     <h2>Primera División</h2>
   </div>
 
+  <!-- ZONA A -->
   <div class="card">
     <h3>Zona A</h3>
     <button onclick="showSub('pA_tabla')">Tabla</button>
-    <button onclick="showSub('pA_fixture')">Fixture</button>
-    <button onclick="showSub('pA_resultados')">Resultados</button>
   </div>
 
-  <div class="card">
-    <h3>Zona B</h3>
-    <button onclick="showSub('pB_tabla')">Tabla</button>
-    <button onclick="showSub('pB_fixture')">Fixture</button>
-    <button onclick="showSub('pB_resultados')">Resultados</button>
-  </div>
-
- <div id="pA_tabla" class="card hidden sub">
+  <div id="pA_tabla" class="card hidden sub">
     <h3>Tabla - Zona A</h3>
 
     <table style="width:100%; border-collapse:collapse; font-size:12px;">
-      <tr style="background:#111827;">
-        <th style="padding:6px;">#</th>
-        <th style="padding:6px; text-align:left;">Equipo</th>
-        <th>PJ</th>
-        <th>PG</th>
-        <th>PE</th>
-        <th>PP</th>
-        <th>GF</th>
-        <th>GC</th>
-        <th>DG</th>
-        <th>PTS</th>
+      <tr>
+        <th>#</th>
+        <th style="text-align:left;">Equipo</th>
+        <th>PJ</th><th>PG</th><th>PE</th><th>PP</th>
+        <th>GF</th><th>GC</th><th>DG</th><th>PTS</th>
       </tr>
 
       <tr style="background:#14532d; font-weight:bold;">
-<td>1</td><td>Club Union de Gral. M. Campos</td>
+        <td>1</td><td>Club Union de Gral. M. Campos</td>
+        <td>0</td><td>0</td><td>0</td><td>0</td>
+        <td>0</td><td>0</td><td>0</td><td>0</td>
+      </tr>
+
       <tr><td>2</td><td>Club Union Deportiva Bernasconi</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>3</td><td>Club Atletico Huracan</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>4</td><td>Club Deportivo Independiente</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
@@ -161,48 +151,39 @@ footer{
       <tr><td>7</td><td>Club Deportivo y Social Colonial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 
     </table>
-</div>
-table th{
-  background:#111827;
-  padding:6px;
-}
-
-table td{
-  padding:6px;
-  text-align:center;
-}
-
-table tr:nth-child(even){
-  background:#18212f;
-}
-
-table tr:first-child{
-  font-weight:bold;
-}
-
-  <div id="pA_fixture" class="card hidden sub">
-    <h3>Fixture - Zona A</h3>
-    <p>Próximamente</p>
   </div>
 
-  <div id="pA_resultados" class="card hidden sub">
-    <h3>Resultados - Zona A</h3>
-    <p>Próximamente</p>
+  <!-- ZONA B -->
+  <div class="card">
+    <h3>Zona B</h3>
+    <button onclick="showSub('pB_tabla')">Tabla</button>
   </div>
 
   <div id="pB_tabla" class="card hidden sub">
     <h3>Tabla - Zona B</h3>
-    <p>Próximamente</p>
-  </div>
 
-  <div id="pB_fixture" class="card hidden sub">
-    <h3>Fixture - Zona B</h3>
-    <p>Próximamente</p>
-  </div>
+    <table style="width:100%; border-collapse:collapse; font-size:12px;">
+      <tr>
+        <th>#</th>
+        <th style="text-align:left;">Equipo</th>
+        <th>PJ</th><th>PG</th><th>PE</th><th>PP</th>
+        <th>GF</th><th>GC</th><th>DG</th><th>PTS</th>
+      </tr>
 
-  <div id="pB_resultados" class="card hidden sub">
-    <h3>Resultados - Zona B</h3>
-    <p>Próximamente</p>
+      <tr style="background:#14532d; font-weight:bold;">
+        <td>1</td><td>Club Social y Deportivo Union</td>
+        <td>0</td><td>0</td><td>0</td><td>0</td>
+        <td>0</td><td>0</td><td>0</td><td>0</td>
+      </tr>
+
+      <tr><td>2</td><td>Club Sportivo y Cultural</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>3</td><td>Club Atletico Pampero</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>4</td><td>Club Villa Mengelle</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>5</td><td>Club Darregueira</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>6</td><td>Club Atletico Rampla Jrs</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>7</td><td>Club Deportivo Alpachiri</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+
+    </table>
   </div>
 
 </div>
