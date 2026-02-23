@@ -99,10 +99,55 @@ footer{
 </div>
 
 <div id="primera" class="section">
+
   <div class="card">
     <h2>Primera División</h2>
-    <p>Zona A y Zona B</p>
   </div>
+
+  <div class="card">
+    <h3>Zona A</h3>
+    <button onclick="showSub('primeraA_tabla')">Tabla</button>
+    <button onclick="showSub('primeraA_fixture')">Fixture</button>
+    <button onclick="showSub('primeraA_resultados')">Resultados</button>
+  </div>
+
+  <div class="card">
+    <h3>Zona B</h3>
+    <button onclick="showSub('primeraB_tabla')">Tabla</button>
+    <button onclick="showSub('primeraB_fixture')">Fixture</button>
+    <button onclick="showSub('primeraB_resultados')">Resultados</button>
+  </div>
+
+  <div id="primeraA_tabla" class="card sub hidden">
+    <h3>Tabla - Zona A</h3>
+    <p>Próximamente tabla oficial</p>
+  </div>
+
+  <div id="primeraA_fixture" class="card sub hidden">
+    <h3>Fixture - Zona A</h3>
+    <p>Próximamente fixture oficial</p>
+  </div>
+
+  <div id="primeraA_resultados" class="card sub hidden">
+    <h3>Resultados - Zona A</h3>
+    <p>Próximamente resultados oficiales</p>
+  </div>
+
+  <div id="primeraB_tabla" class="card sub hidden">
+    <h3>Tabla - Zona B</h3>
+    <p>Próximamente tabla oficial</p>
+  </div>
+
+  <div id="primeraB_fixture" class="card sub hidden">
+    <h3>Fixture - Zona B</h3>
+    <p>Próximamente fixture oficial</p>
+  </div>
+
+  <div id="primeraB_resultados" class="card sub hidden">
+    <h3>Resultados - Zona B</h3>
+    <p>Próximamente resultados oficiales</p>
+  </div>
+
 </div>
 
 <div id="reserva" class="section">
@@ -111,13 +156,7 @@ footer{
     <p>Zona A y Zona B</p>
   </div>
 </div>
-
-<div id="senior" class="section">
-  <div class="card">
-    <h2>Senior</h2>
-    <p>Zona única</p>
-  </div>
-  
+ 
 </div><div id="senior" class="section">
   <div class="card">
     <h2>Senior</h2>
@@ -131,6 +170,13 @@ footer{
 
 <script>
 function showSection(sectionId){
+  <script>
+function showSub(id){
+  const subs = document.querySelectorAll('.sub');
+  subs.forEach(el => el.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+</script>
   const sections=document.querySelectorAll('.section');
   sections.forEach(section=>{
     section.classList.remove('active');
